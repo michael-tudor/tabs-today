@@ -15,7 +15,7 @@
     <% @marks.each do |mark| %>
       <tr>
         <td><%= mark.title %></td>
-        <td><%= mark.size_position %></td>
+        <td><%= mark.position_size %></td>
         <td><%= link_to 'Show', mark %></td>
         <td><%= link_to 'Edit', edit_mark_path(mark) %></td>
         <td><%= link_to 'Destroy', mark, method: :delete, data: { confirm: 'Are you sure?' } %></td>

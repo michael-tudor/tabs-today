@@ -1,5 +1,7 @@
 class MarksController < ApplicationController
+  load_and_authorize_resource
   before_action :set_mark, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /marks
   # GET /marks.json
@@ -25,6 +27,7 @@ class MarksController < ApplicationController
   # POST /marks.json
   def create
     @mark = Mark.new(mark_params)
+    @mark.user = current_user
 
     respond_to do |format|
       if @mark.save
@@ -69,6 +72,6 @@ class MarksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mark_params
-      params.require(:mark).permit(:title, :size_position)
+      params.require(:mark).permit(:title, :position_size)
     end
 end
