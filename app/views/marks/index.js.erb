@@ -1,0 +1,14 @@
+(function () {
+  var grid = jQuery('.grid-stack').data('gridstack');
+
+  <% @marks.each do |mark| %>
+    grid.addWidget(
+      jQuery("<%= j render partial: 'form', locals: { mark: mark } %>"),
+      <%= mark.x %>,
+      <%= mark.y %>,
+      <%= mark.width %>,
+      <%= mark.height %>,
+      true
+    );
+  <% end %>
+})();

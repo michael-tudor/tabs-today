@@ -3,7 +3,5 @@ Rails.application.routes.draw do
 
   root 'marks#index'
 
-  resources :marks do
-    get :grid, on: :collection
-  end
+  resources :marks
 end

@@ -1,27 +1,21 @@
-<%= form_with(model: mark, local: true) do |form| %>
-  <% if mark.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(mark.errors.count, "error") %> prohibited this mark from being saved:</h2>
+<div id="mId<%= mark.id %>" class="grid-stack-item">
+  <div class="grid-stack-item-content">
+    <%= form_with(model: mark, local: true) do |form| %>
 
-      <ul>
-      <% mark.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% if mark.errors.any? %>
+        <% mark.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       <% end %>
-      </ul>
+
+      <div class="header">
+        <%= form.text_field :title %>
+      </div>
+
+    <% end %>
+
+    <div class="control">
+      <%= link_to 'Destroy', mark, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :mark_title %>
   </div>
-
-  <div class="field">
-    <%= form.label :position_size %>
-    <%= form.text_field :position_size, id: :mark_position_size %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

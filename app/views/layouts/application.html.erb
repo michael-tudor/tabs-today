@@ -9,12 +9,12 @@
   </head>
   <body>
     <div class="top-bar">
-      <%= link_to 'Tabsday', '/', class: 'logo' %>
+      <%= link_to 'tabsday', '/', class: 'logo' %>
       <% if user_signed_in? %>
         <%= link_to 'New Mark', new_mark_path %>
         <%= current_user.email %>
         <%= link_to 'Edit profile', edit_user_registration_path %>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% else %>
           <%= link_to 'Sign up', new_user_registration_path %>
           <%= link_to 'Login', new_user_session_path %>

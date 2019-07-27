@@ -1,48 +1,21 @@
 class MarksController < ApplicationController
   # load_and_authorize_resource
-  before_action :set_mark, only: [:show, :edit, :update, :destroy]
+  before_action :set_mark, only: [:update, :destroy]
   before_action :authenticate_user!
 
-  # GET /marks
-  # GET /marks.json
   def index
-    @marks = Mark.all
-  end
+    @marks = Mark.select('id, title, position_size').where(user_id: current_user.id)
 
-  def grid
-    marks = Mark.select('id, title, position_size').where(user_id: current_user.id)
-    @marks = []
-    marks.each do |mark|
-      position_size = mark.position_size.split(',')
-      @marks << {
-        id: mark.id,
-        title: mark.title,
-        x: position_size[0],
-        y: position_size[1],
-        width: position_size[2],
-        height: position_size[3]
-      }
+    respond_to do |format|
+      format.html
+      format.js
     end
-
-    render json: @marks.to_json
   end
 
-  # GET /marks/1
-  # GET /marks/1.json
-  def show
-  end
-
-  # GET /marks/new
   def new
     @mark = Mark.new
   end
 
-  # GET /marks/1/edit
-  def edit
-  end
-
-  # POST /marks
-  # POST /marks.json
   def create
     @mark = Mark.new(mark_params)
     @mark.user = current_user
@@ -58,8 +31,6 @@ class MarksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /marks/1
-  # PATCH/PUT /marks/1.json
   def update
     respond_to do |format|
       if @mark.update(mark_params)
@@ -72,13 +43,13 @@ class MarksController < ApplicationController
     end
   end
 
-  # DELETE /marks/1
-  # DELETE /marks/1.json
   def destroy
     @mark.destroy
+
     respond_to do |format|
       format.html { redirect_to marks_url, notice: 'Mark was successfully destroyed.' }
       format.json { head :no_content }
+      format.js { render layout: false }
     end
   end
 

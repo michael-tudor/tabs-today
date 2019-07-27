@@ -1,11 +1,27 @@
 $top-bar-size: 60px;
 $margin-default: 20px;
+$cell-height: 30px;
 
 $top-color: #fff;
 $body-color: #f7f7f7;
+$text-color: #202124;
+$border-color: #ddd;
+$logo-color: $text-color;
 
 body {
   background-color: $body-color;
+  color: $text-color;
+}
+
+a.logo {
+  display: inline-block;
+  padding: 0 $margin-default 0 $margin-default;
+  margin-right: $margin-default;
+  color: $logo-color;
+  font-weight: bolder;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  font-size: 23px;
 }
 
 .top-bar,
@@ -17,7 +33,6 @@ body {
 }
 
 .top-bar {
-  background-color: $top-color;
   height: $top-bar-size;
   padding: 0 $margin-default;
   line-height: ($top-bar-size - 2);
@@ -30,12 +45,66 @@ body {
   background-color: $body-color;
   height: auto;
   padding: $margin-default ($margin-default / 2) 0;
-  border-top: 1px dashed #ddd;
+  border-top: 1px dashed $border-color;
   top: ($top-bar-size + 1);
   bottom: 0;
   overflow: auto;
+}
 
-  .grid-stack-item-content {
-    background-color: $top-color;
+// gridstack
+.grid-stack-item:hover .control * {
+  visibility: visible;
+}
+
+.grid-stack-item-content {
+  background-color: $top-color;
+  border: 1px solid $border-color;
+
+  input[type="text"],
+  textarea {
+    background: transparent;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0 none;
+    color: $text-color;
+  }
+
+  .header,
+  .control {
+    height: $cell-height;
+    padding: 0 $margin-default;
+    line-height: ($cell-height - 2);
+  }
+
+  .header {
+    input.title {
+      height: $cell-height;
+      font-weight: bold;
+    }
+  }
+
+  .control {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    * {
+      visibility: hidden;
+    }
+
+    a {
+      display: inline-block;
+      color: $text-color;
+      text-decoration: underline;
+
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+      }
+    }
   }
 }
