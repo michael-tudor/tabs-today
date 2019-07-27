@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  root 'marks#index'
-
   devise_for :users
 
-  resources :marks
+  root 'marks#index'
+
+  resources :marks do
+    get :grid, on: :collection
+  end
 end

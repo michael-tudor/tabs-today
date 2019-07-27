@@ -1,5 +1,5 @@
 class MarksController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
   before_action :set_mark, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
@@ -7,6 +7,24 @@ class MarksController < ApplicationController
   # GET /marks.json
   def index
     @marks = Mark.all
+  end
+
+  def grid
+    marks = Mark.select('id, title, position_size').where(user_id: current_user.id)
+    @marks = []
+    marks.each do |mark|
+      position_size = mark.position_size.split(',')
+      @marks << {
+        id: mark.id,
+        title: mark.title,
+        x: position_size[0],
+        y: position_size[1],
+        width: position_size[2],
+        height: position_size[3]
+      }
+    end
+
+    render json: @marks.to_json
   end
 
   # GET /marks/1

@@ -8,20 +8,22 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <div>
-      <%= link_to 'Tabsday.com', '/' %> |
+    <div class="top-bar">
+      <%= link_to 'Tabsday', '/', class: 'logo' %>
       <% if user_signed_in? %>
-        <%= link_to 'Edit profile', edit_user_registration_path %> |
+        <%= link_to 'New Mark', new_mark_path %>
+        <%= current_user.email %>
+        <%= link_to 'Edit profile', edit_user_registration_path %>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       <% else %>
-          <%= link_to 'Sign up', new_user_registration_path %> | <%= link_to 'Login', new_user_session_path %>
+          <%= link_to 'Sign up', new_user_registration_path %>
+          <%= link_to 'Login', new_user_session_path %>
       <% end %>
     </div>
-    <hr />
-    <div>
-      <!-- notice -->
-      <p class="alert"><%= alert %></p>
+
+    <div class="bottom-bar">
+      <%= yield %>
     </div>
-    <%= yield %>
+    <!-- notice || alert -->
   </body>
 </html>

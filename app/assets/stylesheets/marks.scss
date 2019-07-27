@@ -1,3 +1,41 @@
-// Place all the styles related to the Marks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$top-bar-size: 60px;
+$margin-default: 20px;
+
+$top-color: #fff;
+$body-color: #f7f7f7;
+
+body {
+  background-color: $body-color;
+}
+
+.top-bar,
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+
+.top-bar {
+  background-color: $top-color;
+  height: $top-bar-size;
+  padding: 0 $margin-default;
+  line-height: ($top-bar-size - 2);
+  top: 0;
+  bottom: auto;
+  overflow: hidden;
+}
+
+.bottom-bar {
+  background-color: $body-color;
+  height: auto;
+  padding: $margin-default ($margin-default / 2) 0;
+  border-top: 1px dashed #ddd;
+  top: ($top-bar-size + 1);
+  bottom: 0;
+  overflow: auto;
+
+  .grid-stack-item-content {
+    background-color: $top-color;
+  }
+}
