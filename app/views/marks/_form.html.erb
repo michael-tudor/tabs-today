@@ -1,17 +1,9 @@
 <div id="mId<%= mark.id %>" class="grid-stack-item">
   <div class="grid-stack-item-content">
-    <%= form_with(model: mark, local: true) do |form| %>
-
-      <% if mark.errors.any? %>
-        <% mark.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      <% end %>
-
+    <%= form_with model: mark, class: 'mark-form', local: false do |f| %>
       <div class="header">
-        <%= form.text_field :title %>
+        <%= f.text_field :title, class: 'title', placeholder: 'Enter title' %>
       </div>
-
     <% end %>
 
     <div class="control">

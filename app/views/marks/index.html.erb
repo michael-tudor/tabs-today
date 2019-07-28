@@ -1,1 +1,13 @@
-<div class="grid-stack"></div>
+<div class="grid-stack">
+  <div class="grid-stack-item add-new-mark"
+    data-gs-x="4" data-gs-y="0"
+    data-gs-width="4" data-gs-height="2"
+    data-gs-no-resize="true" data-gs-no-move="true" data-gs-locked="true">
+    <div class="grid-stack-item-content">
+      <%= link_to marks_path({ mark: { type: '' } }), method: :post, remote: true do %>
+        <i class="icofont-paper"></i>
+        <span class="text">New Paper</span>
+      <% end %>
+    </div>
+  </div>
+</div>

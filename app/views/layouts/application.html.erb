@@ -4,26 +4,26 @@
     <title>Tabsday</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <div class="top-bar">
       <%= link_to 'tabsday', '/', class: 'logo' %>
-      <% if user_signed_in? %>
-        <%= link_to 'New Mark', new_mark_path %>
-        <%= current_user.email %>
-        <%= link_to 'Edit profile', edit_user_registration_path %>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% else %>
+
+      <div class="user-panel">
+        <% if user_signed_in? %>
+          <%= link_to current_user.email, edit_user_registration_path, title: 'Edit profile' %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% else %>
           <%= link_to 'Sign up', new_user_registration_path %>
           <%= link_to 'Login', new_user_session_path %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
 
     <div class="bottom-bar">
       <%= yield %>
     </div>
-    <!-- notice || alert -->
   </body>
 </html>

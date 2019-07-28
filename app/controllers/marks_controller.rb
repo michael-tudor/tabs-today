@@ -12,21 +12,17 @@ class MarksController < ApplicationController
     end
   end
 
-  def new
-    @mark = Mark.new
-  end
-
   def create
     @mark = Mark.new(mark_params)
     @mark.user = current_user
+    @mark.position_size = '4,2,4,4'
 
     respond_to do |format|
       if @mark.save
-        format.html { redirect_to @mark, notice: 'Mark was successfully created.' }
-        format.json { render :show, status: :created, location: @mark }
+        @marks = [@mark]
+        format.js { render :index }
       else
-        format.html { render :new }
-        format.json { render json: @mark.errors, status: :unprocessable_entity }
+        # format.json { render json: @mark.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -34,11 +30,9 @@ class MarksController < ApplicationController
   def update
     respond_to do |format|
       if @mark.update(mark_params)
-        format.html { redirect_to @mark, notice: 'Mark was successfully updated.' }
-        format.json { render :show, status: :ok, location: @mark }
+        format.js { render nothing: true, status: :ok }
       else
-        format.html { render :edit }
-        format.json { render json: @mark.errors, status: :unprocessable_entity }
+        format.js { render :update, status: :unprocessable_entity }
       end
     end
   end
@@ -47,20 +41,17 @@ class MarksController < ApplicationController
     @mark.destroy
 
     respond_to do |format|
-      format.html { redirect_to marks_url, notice: 'Mark was successfully destroyed.' }
-      format.json { head :no_content }
-      format.js { render layout: false }
+      format.js # Mark was successfully destroyed.
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_mark
-      @mark = Mark.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def mark_params
-      params.require(:mark).permit(:title, :position_size)
-    end
+  def set_mark
+    @mark = Mark.find(params[:id])
+  end
+
+  def mark_params
+    params.require(:mark).permit(:title, :type, :position_size)
+  end
 end
