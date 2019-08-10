@@ -19,6 +19,7 @@
 //= require gridstack/gridstack
 //= require gridstack/gridstack.jQueryUI
 
+//= require bootstrap/popper.min
 //= require bootstrap/bootstrap.min
 
 //= require marks
