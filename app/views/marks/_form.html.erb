@@ -2,7 +2,7 @@
   <div class="grid-stack-item-content">
     <%= form_with model: mark, class: 'mark-form', local: false do |f| %>
       <div class="header">
-        <%= f.text_field :title, class: 'title', placeholder: 'Enter title' %>
+        <%= f.text_field :title, class: 'title', autocomplete: 'off', placeholder: 'Enter title' %>
       </div>
     <% end %>
 
