@@ -4,23 +4,31 @@ class MarksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @marks = Mark.select('id, title, position_size').where(user_id: current_user.id)
+    @marks = Mark.select('id, title').where(user_id: current_user.id)
+    workspace = current_user.get_default_workspace
 
     respond_to do |format|
-      format.html
-      format.js
+      format.html do
+        @workspace_id = workspace.id
+      end
+      format.js do
+        @positions_and_sizes = workspace.positions_and_sizes_to_h
+      end
     end
   end
 
   def create
     @mark = Mark.new(mark_params)
     @mark.user = current_user
-    @mark.position_size = '4,2,4,4'
 
     respond_to do |format|
       if @mark.save
-        @marks = [@mark]
-        format.js { render :index }
+        format.js do
+          workspace = current_user.get_default_workspace
+          @positions_and_sizes = workspace.positions_and_sizes_to_h
+
+          render :index
+        end
       else
         # need to test
         # format.js { render 'shared/notification', locals: { item: @mark }, status: :unprocessable_entity }
@@ -54,6 +62,6 @@ class MarksController < ApplicationController
   end
 
   def mark_params
-    params.require(:mark).permit(:title, :type, :position_size)
+    params.require(:mark).permit(:title, :type)
   end
 end

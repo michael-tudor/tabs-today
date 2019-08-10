@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190730181734) do
+ActiveRecord::Schema.define(version: 20190810182318) do
 
   create_table "marks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
-    t.string "position_size"
     t.string "type"
     t.string "window_status"
     t.string "style"
@@ -58,7 +57,7 @@ ActiveRecord::Schema.define(version: 20190730181734) do
   create_table "workspaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "parent_id"
     t.string "name"
-    t.string "position_and_sizes"
+    t.string "positions_and_sizes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

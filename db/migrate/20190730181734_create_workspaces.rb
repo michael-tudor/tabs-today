@@ -3,7 +3,7 @@ class CreateWorkspaces < ActiveRecord::Migration[5.1]
     create_table :workspaces do |t|
       t.integer :parent_id
       t.string :name
-      t.string :position_and_sizes # => {}
+      t.string :positions_and_sizes
 
       t.timestamps
     end

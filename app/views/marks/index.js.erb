@@ -1,13 +1,15 @@
 (function () {
   var grid = jQuery('.grid-stack').data('gridstack');
 
-  <% @marks.each do |mark| %>
-    grid.addWidget(
-      jQuery("<%= j render partial: 'form', locals: { mark: mark } %>"),
-      <%= mark.x %>,
-      <%= mark.y %>,
-      <%= mark.width %>,
-      <%= mark.height %>
-    );
+  <% if @marks.present? %>
+    <% @positions_and_sizes.each do |item| %>
+      <% next unless mark = @marks.where(id: item['id'])&.first %>
+      grid.addWidget(
+        jQuery("<%= j render partial: 'form', locals: { mark: mark } %>"),
+        <%= item['x'] %>, <%= item['y'] %>, <%= item['w'] %>, <%= item['h'] %>
+      );
+    <% end %>
+  <% else %>
+    grid.addWidget(jQuery("<%= j render partial: 'form', locals: { mark: @mark } %>"), 4, 2, 4, 4);
   <% end %>
 })();

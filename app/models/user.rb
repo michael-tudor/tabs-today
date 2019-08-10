@@ -10,6 +10,14 @@ class User < ApplicationRecord
 
   after_create :create_workspace_by_default
 
+  def get_default_workspace
+    if workspaces.any?
+      workspaces.first
+    else
+      create_workspace_by_default
+    end
+  end
+
   private
 
   def create_workspace_by_default

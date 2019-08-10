@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   root 'marks#index'
 
   resources :marks
+
+  resources :workspaces do
+    get :token, on: :collection
+  end
 end
