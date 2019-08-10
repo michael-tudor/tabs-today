@@ -6,16 +6,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :marks, dependent: :destroy
+  has_many :workspaces, dependent: :destroy
 
-  # def admin?
-  #   has_role?(:admin)
-  # end
+  after_create :create_workspace_by_default
 
-  # def client?
-  #   has_role?(:client)
-  # end
+  private
 
-  # def user?
-  #   has_role?(:user)
-  # end
+  def create_workspace_by_default
+    Workspace.create(name: 'My Workspace', user_id: id)
+  end
 end

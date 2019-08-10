@@ -22,7 +22,8 @@ class MarksController < ApplicationController
         @marks = [@mark]
         format.js { render :index }
       else
-        # format.json { render json: @mark.errors, status: :unprocessable_entity }
+        # need to test
+        # format.js { render 'shared/notification', locals: { item: @mark }, status: :unprocessable_entity }
       end
     end
   end
@@ -32,7 +33,8 @@ class MarksController < ApplicationController
       if @mark.update(mark_params)
         format.js { render nothing: true, status: :ok }
       else
-        format.js { render :update, status: :unprocessable_entity }
+        # need to test
+        # format.js { render 'shared/notification', locals: { item: @mark }, status: :unprocessable_entity }
       end
     end
   end

@@ -1,12 +1,14 @@
-$top-bar-size: 60px;
 $margin-default: 20px;
 $cell-height: 40px;
+$top-bar-size: $cell-height + $margin-default;
 
 $top-color: #fff;
-$body-color: #f7f7f7;
-$text-color: #202124;
+$body-color: #fafafa;
+$solid-text-color: #202124;
+$text-color: #4a4a4a;
 $disable-color: #5f6368;
-$border-color: #ddd;
+$border-color: #ecedee;
+$active-color: #6997ff;
 
 body {
   background-color: $body-color;
@@ -31,22 +33,13 @@ a {
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 0;
 }
 
 .top-bar {
+  background-color: $top-color;
   height: $top-bar-size;
-  padding: 0 $margin-default;
-  line-height: ($top-bar-size - 2);
   top: 0;
   bottom: auto;
-  overflow: hidden;
-
-  a {
-    display: inline-block;
-    padding: 0 $margin-default;
-    color: $disable-color;
-  }
 
   a.logo {
     display: inline-block;
@@ -56,25 +49,27 @@ a {
     font-weight: bolder;
     text-decoration: none;
     letter-spacing: 0.15em;
+    line-height: ($top-bar-size - 2);
     font-size: 23px;
   }
 
-  .user-panel {
-    float: right;
+  .dropdown-menu {
+    z-index: 1;
   }
 }
 
 .bottom-bar {
+  border-top: 1px solid $border-color;
   background-color: $body-color;
   height: auto;
   padding: $margin-default ($margin-default / 2) 0;
-  border-top: 1px dashed $border-color;
   top: ($top-bar-size + 1);
   bottom: 0;
   overflow: auto;
+  z-index: -1;
 }
 
-// gridstack
+// Grid Stack
 .grid-stack-item:hover .control * {
   visibility: visible;
 }
@@ -93,6 +88,7 @@ a {
 
       i.icofont-paper {
         font-size: 48px;
+        color: $active-color;
       }
 
       span.text {
@@ -107,6 +103,7 @@ a {
   background-color: $top-color;
   border: 1px solid $border-color;
   border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 
   input[type="text"],
   textarea {
@@ -116,9 +113,6 @@ a {
     margin: 0;
     border: 0 none;
     color: $text-color;
-    // cursor: default;
-
-    // &::placeholder {}
   }
 
   .header,

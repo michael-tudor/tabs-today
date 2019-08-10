@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190726174238) do
+ActiveRecord::Schema.define(version: 20190730181734) do
 
   create_table "marks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -55,5 +55,16 @@ ActiveRecord::Schema.define(version: 20190726174238) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  create_table "workspaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "parent_id"
+    t.string "name"
+    t.string "position_and_sizes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_workspaces_on_user_id"
+  end
+
   add_foreign_key "marks", "users"
+  add_foreign_key "workspaces", "users"
 end
