@@ -10,12 +10,12 @@ default: &default
 
 development:
   <<: *default
-  database: tabsday_development
+  database: tabstoday_development
 
 test:
   <<: *default
-  database: tabsday_test
+  database: tabstoday_test
 
 production:
   <<: *default
-  database: tabsday_production
+  database: tabstoday_production
