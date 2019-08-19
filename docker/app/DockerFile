@@ -1,3 +1,4 @@
+# https://stackoverflow.com/questions/54383233/how-to-dockerize-a-rails-application-with-mysql-nginx-and-cron-tasks
 FROM ruby:2.5.2
 RUN yum update -y && yum install -y epel-release nano ImageMagick ImageMagick-devel && yum groupinstall -y 'development tools' && yum install -y wget nodejs
 

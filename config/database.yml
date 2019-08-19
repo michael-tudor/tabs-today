@@ -18,6 +18,5 @@ test:
 
 production:
   <<: *default
-  host: db
   database: tabs_today_production
   password: root
