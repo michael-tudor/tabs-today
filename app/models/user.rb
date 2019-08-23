@@ -21,6 +21,6 @@ class User < ApplicationRecord
   private
 
   def create_workspace_by_default
-    Workspace.create(name: 'My Workspace', user_id: id)
+    Workspace.create(name: 'My Workspace', user_id: id, positions_and_sizes: '{}')
   end
 end

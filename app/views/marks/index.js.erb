@@ -9,7 +9,7 @@
         <%= item['x'] %>, <%= item['y'] %>, <%= item['w'] %>, <%= item['h'] %>
       );
     <% end %>
-  <% else %>
+  <% elsif @mark.present? %>
     grid.addWidget(jQuery("<%= j render partial: 'form', locals: { mark: @mark } %>"), 4, 2, 4, 4);
   <% end %>
 })();
