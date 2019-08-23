@@ -7,7 +7,8 @@ jQuery(document).ready(function () {
     grid_stack.gridstack({
       float: true,
       animate: true,
-      cellHeight: '40px'
+      cellHeight: '40px',
+      alwaysShowResizeHandle: true
     });
 
     // Getting Token for Update Grid
