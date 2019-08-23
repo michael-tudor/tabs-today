@@ -1,5 +1,6 @@
 (function () {
-  var grid = jQuery('.grid-stack').data('gridstack');
+  grid = jQuery('.grid-stack').data('gridstack');
+
   <% if @marks.present? %>
     <% @marks.each do |mark| %>
       <% ps = @positions_and_sizes.find { |p| p['id'] == mark.id.to_s } %>
