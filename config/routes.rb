@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'marks#index'
+  root 'home#index'
 
   resources :marks
 
