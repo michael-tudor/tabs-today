@@ -1,13 +1,12 @@
 (function () {
   var grid = jQuery('.grid-stack').data('gridstack');
-
   <% if @marks.present? %>
-    <% @positions_and_sizes.each do |item| %>
-      <% next unless mark = @marks.where(id: item['id'])&.first %>
+    <% @marks.each do |mark| %>
+      <% ps = @positions_and_sizes.find { |p| p['id'] == mark.id.to_s } %>
+      <% ps = {'x' => 4, 'y' => 2, 'w' => 4, 'h' => 4} unless ps.present? %>
       grid.addWidget(
         jQuery("<%= j render partial: 'form', locals: { mark: mark } %>"),
-        <%= item['x'] %>, <%= item['y'] %>, <%= item['w'] %>, <%= item['h'] %>
-      );
+        <%= ps['x'] %>, <%= ps['y'] %>, <%= ps['w'] %>, <%= ps['h'] %>);
     <% end %>
   <% elsif @mark.present? %>
     grid.addWidget(jQuery("<%= j render partial: 'form', locals: { mark: @mark } %>"), 4, 2, 4, 4);
