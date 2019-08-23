@@ -4,7 +4,7 @@ class MarksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @marks = Mark.select('id, title').where(user_id: current_user.id)
+    @marks = Mark.where(user_id: current_user.id)
     workspace = current_user.get_default_workspace
 
     respond_to do |format|
@@ -37,13 +37,10 @@ class MarksController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @mark.update(mark_params)
-        format.js { render nothing: true, status: :ok }
-      else
-        # need to test
-        # format.js { render 'shared/notification', locals: { item: @mark }, status: :unprocessable_entity }
-      end
+    if @mark.update(mark_params)
+      render json: { status: :success }, status: :ok
+    else
+      render json: { errors: @mark.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -62,6 +59,6 @@ class MarksController < ApplicationController
   end
 
   def mark_params
-    params.require(:mark).permit(:title, :type)
+    params.require(:mark).permit(:title, :type, :description)
   end
 end
