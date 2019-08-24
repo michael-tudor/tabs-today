@@ -26,7 +26,7 @@
     /></noscript>
     <!-- End Facebook Pixel Code -->
   </head>
-  <body class="home">
+  <body>
     <div class="container navigation-header">
       <div class="row">
         <div class="col-md-4">
@@ -34,16 +34,37 @@
         </div>
 
         <div class="col-md-8">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'log-in', id: nil }) do |f| %>
-            <%= f.hidden_field(:remember_me, value: '1') if devise_mapping.rememberable? %>
-            <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: 'email', placeholder: 'Enter your email' %>
-            <%= f.password_field :password, class: 'form-control', autocomplete: 'current-password', placeholder: 'Enter your password' %>
-            <%= f.submit 'Log in', class: 'btn btn-info' %>
+          <% if user_signed_in? %>
+            <div class="user-menu">
+                <%= link_to edit_user_registration_path do %>
+                  <i class="icofont-edit"></i>
+                  <span>Edit profile</span>
+                <% end %>
+                <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="icofont-logout"></i>
+                  <span>Logout</span>
+                <% end %>
+            </div>
+          <% else %>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'log-in', id: nil }) do |f| %>
+              <%= f.hidden_field(:remember_me, value: '1') if devise_mapping.rememberable? %>
+              <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: 'email', placeholder: 'Enter your email' %>
+              <%= f.password_field :password, class: 'form-control', autocomplete: 'current-password', placeholder: 'Enter your password' %>
+              <%= f.submit 'Log in', class: 'btn btn-info' %>
+            <% end %>
           <% end %>
         </div>
       </div>
     </div>
 
-    <%= yield %>
+    <% if params[:controller] == 'home' && params[:action] == 'index' %>
+      <%= yield %>
+    <% else %>
+      <div class="border-top padding-top">
+        <div class="container">
+          <%= yield %>
+        </div>
+      </div>
+    <% end %>
   </body>
 </html>
