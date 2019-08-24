@@ -1,0 +1,152 @@
+h1, h2, h3, h4, h5, h6,
+a, input, textarea,
+body {
+  color: #111;
+  line-height: 1.4em;
+  letter-spacing: 0.05em;
+}
+
+.form-control,
+.btn {
+  border-radius: 2px;
+}
+
+.form-control {
+  border-color: #e5e5e5;
+}
+
+// Sections
+.navigation-header {
+  height: 60px;
+  margin-bottom: 0;
+  line-height: 58px;
+
+  a.logo-lp {
+    display: inline-block;
+    background: asset-url('logo_37x36.jpg') no-repeat scroll left center / auto 36px transparent;
+    height: 100%;
+    margin: 0;
+    padding: 0 20px 0 46px;
+    color: #111;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 58px;
+    text-decoration: none;
+  }
+}
+
+section {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.minds {
+  background: url('data:image/jpeg;base64,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') 50% 0 repeat;
+  padding-top: 100px;
+
+  .what-is-it {
+    // original size image 559px x 183px
+    background: asset-url('notes.png') no-repeat scroll center top transparent;
+    padding-top: 223px;
+  }
+
+  h1, h2, h3 {
+    color: #414042;
+    text-align: center;
+    margin: 0;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+  h2, h3 {
+    font-size: 26px;
+  }
+}
+
+.offer {
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  h1,
+  h2 {
+    display: inline-block;
+    margin: 0;
+  }
+
+  h1 {
+    padding-bottom: 30px;
+    font-size: 42px;
+    font-weight: bold;
+  }
+}
+
+.favorite {
+  padding: 120px 0;
+
+  h2 {
+    font-size: 36px;
+    text-align: center;
+
+    b {
+      font-weight: bold;
+    }
+  }
+}
+
+// Elements
+.sign-up {
+  .form-control {
+    margin: 20px 0;
+  }
+
+  .btn-success {
+    background-color: #A0DB9D;
+    width: 100%;
+    border: 0 none;
+    color: #111;
+    font-weight: bold;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: #92C690 !important;
+      border: 0 none !importants;
+      box-shadow: 0 0 0 0.2rem rgba(147, 198, 144, 0.25) !important;
+    }
+  }
+}
+
+form.log-in {
+  display: block;
+  text-align: right;
+  font-size: 0;
+
+  input {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 12px;
+  }
+
+  .form-control {
+    width: 220px;
+  }
+
+  .btn-info {
+    background-color: #b9daf3;
+    border-color: #b9daf3;
+    color: #111;
+    font-weight: bold;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: #8cb2cf !important;
+      border-color: #8cb2cf !important;
+      box-shadow: 0 0 0 0.2rem rgba(140, 178, 207, 0.25) !important;
+    }
+  }
+}
