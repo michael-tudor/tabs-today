@@ -41,32 +41,108 @@ section {
   }
 }
 
-.offer {
-  padding-top: 80px;
-  padding-bottom: 80px;
-
-  h1,
-  h2 {
-    display: inline-block;
-    margin: 0;
-  }
+.favorite {
+  text-align: center;
 
   h1 {
-    padding-bottom: 30px;
-    font-size: 42px;
+    margin: 0 0 80px;
+    padding: 0;
+    font-size: 36px;
     font-weight: bold;
+  }
+
+  h4 {
+    margin: 20px 0 0;
+    padding: 0;
+  }
+
+  p {
+    margin: 0;
+    padding: 10px 20px 0;
+  }
+
+  .main-card {
+    background: no-repeat scroll center top / 160px 160px transparent;
+    padding-top: 160px;
+    padding-bottom: 80px;
+
+    &.favorite_card_private {
+      background-image: asset-url('favorite/favorite_card_private.gif');
+    }
+
+    &.favorite_card_cloud {
+      background-image: asset-url('favorite/favorite_card_cloud.gif');
+    }
+
+    &.favorite_card_fast {
+      background-image: asset-url('favorite/favorite_card_fast.gif');
+    }
+
+    &.favorite_card_decentralized {
+      background-image: asset-url('favorite/favorite_card_decentralized.gif');
+    }
+
+    &.favorite_card_free {
+      background-image: asset-url('favorite/favorite_card_free.gif');
+    }
+
+    &.favorite_card_secure {
+      background-image: asset-url('favorite/favorite_card_secure.gif');
+    }
+
+    &.favorite_card_powerful {
+      background-image: asset-url('favorite/favorite_card_powerful.gif');
+    }
+
+    &.favorite_card_wecandoit {
+      background-image: asset-url('favorite/favorite_card_wecandoit.gif');
+    }
+
+    &.favorite_card_connect {
+      background-image: asset-url('favorite/favorite_card_connect.gif');
+    }
   }
 }
 
-.favorite {
-  padding: 120px 0;
+.what-for {
+  padding-top: 0;
 
-  h2 {
-    font-size: 36px;
+  .autor {
     text-align: center;
 
-    b {
+    img.avatar {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: auto;
+      border-radius: 100%;
+    }
+
+    a.profile-link {
+      display: block;
+      color: #414042;
+
+      span.name {
+        display: block;
+        padding-top: 20px;
+      }
+    }
+  }
+
+  .q {
+    h2 {
+      margin: 0;
+      padding-bottom: 20px;
       font-weight: bold;
+      font-size: 36px;
+    }
+
+    .who {
+      display: block;
+      margin: 0;
+      padding-top: 20px;
+      color: #414042;
+      text-align: right;
     }
   }
 }

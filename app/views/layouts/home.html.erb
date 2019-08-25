@@ -48,7 +48,7 @@
           <% else %>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'log-in', id: nil }) do |f| %>
               <%= f.hidden_field(:remember_me, value: '1') if devise_mapping.rememberable? %>
-              <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: 'email', placeholder: 'Enter your email' %>
+              <%= f.email_field :email, class: 'form-control', autocomplete: 'email', placeholder: 'Enter your email' %>
               <%= f.password_field :password, class: 'form-control', autocomplete: 'current-password', placeholder: 'Enter your password' %>
               <%= f.submit 'Log in', class: 'btn btn-info' %>
             <% end %>
