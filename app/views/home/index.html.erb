@@ -1,80 +1,161 @@
-<section class="minds">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 what-is-it">
-        <h1>Online Notes</h1>
-        <!-- <h2>More than 180 thousand people use <strong>tabs.today</strong> daily!</h2> -->
-        <h2><strong>Tabs Today</strong> are used by more than 180 thousand people from all over the world every day.</h2>
-      </div>
+<% if params[:lang] == 'ru' %>
+  <section class="minds">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 what-is-it">
+          <h1>Онлайн заметки</h1>
+          <h2><strong>Tabs Today</strong> пользуются более 180 тысяч человек со всего мира каждый день.</h2>
+        </div>
 
-      <div class="col-md-4 sign-up">
-        <h3><strong>Tabs Today</strong> is free forever</h3>
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: nil, id: nil }) do |f| %>
-          <%= f.email_field :email, class: 'form-control form-control-lg', autocomplete: 'email', placeholder: 'Enter your email' %>
-          <%= f.password_field :password, class: 'form-control form-control-lg', autocomplete: 'new-password', placeholder: 'Enter password' %>
-          <%= f.password_field :password_confirmation, class: 'form-control form-control-lg', autocomplete: 'new-password', placeholder: 'Enter confirmation password' %>
-          <%= f.submit 'Sign up', class: 'btn btn-success btn-lg' %>
+        <div class="col-md-4 sign-up">
+          <h3>Бесплатно навсегда</h3>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: nil, id: nil }) do |f| %>
+            <%= f.email_field :email, class: 'form-control form-control-lg', autocomplete: 'email', placeholder: 'Введите адрес эл. почты' %>
+            <%= f.password_field :password, class: 'form-control form-control-lg', autocomplete: 'new-password', placeholder: 'Введите пароль' %>
+            <%= f.password_field :password_confirmation, class: 'form-control form-control-lg', autocomplete: 'new-password', placeholder: 'Повторно, для подтверждения' %>
+            <%= f.submit 'Зарегистрироваться', class: 'btn btn-success btn-lg' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container favorite">
+    <h1>Зачем переходить на Tabs Today?</h1>
+
+    <div class="row">
+      <div class="col-md-4 main-card favorite_card_private">
+        <h4>Приватно</h4>
+        <p><b>Tabs Today</b> заметки зашифрованы и могут быть удалены навсегда.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_cloud">
+        <h4>Облачные технологии</h4>
+        <p><b>Tabs Today</b> позволяет получить доступ к заметкам с нескольких устройств.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_fast">
+        <h4>Быстро</h4>
+        <p><b>Tabs Today</b> сохраняет заметки быстрее, чем любое другое приложение.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_decentralized">
+        <h4>Распределенно</h4>
+        <p><b>Tabs Today</b> серверы распространены по всему миру для безопасности и скорости.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_free">
+        <h4>Бесплатно</h4>
+        <p><b>Tabs Today</b> бесплатно навсегда. Нет агрессивной рекламы.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_secure">
+        <h4>Безопасно</h4>
+        <p><b>Tabs Today</b> держит ваши заметки в безопасности от хакерских атак.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_powerful">
+        <h4>Мощно</h4>
+        <p><b>Tabs Today</b> не имеет ограничений по количеству ваших заметок.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_wecandoit">
+        <h4>Мы можем сделать это!</h4>
+        <p>Помогите сделать заметки снова безопасным – расскажите о <b>Tabs Today</b>.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_connect">
+        <h4>Доступно</h4>
+        <p><b>Tabs Today</b> доступен из самых отдаленных мест.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container what-for">
+    <div class="row">
+      <div class="col-md-2 autor">
+        <%= link_to 'https://www.facebook.com/michael.toderashco', class: 'profile-link', target: '_blank' do %>
+          <%= image_tag 'web_developer.jpg', class: 'avatar' %>
+          <span class="name">Михаил Тодерашко</span>
         <% end %>
       </div>
+      <div class="offset-md-1 col-md-9 q">
+        <h2>Я верю, что, делая действительно важные вещи, вы обязательно достигнете своей цели</h2>
+        <span class="who">— Веб-программист<br>"Tabs Today" Ltd.</span>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+<% else %>
+  <section class="minds">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 what-is-it">
+          <h1>Online Notes</h1>
+          <!-- <h2>More than 180 thousand people use <strong>tabs.today</strong> daily!</h2> -->
+          <h2><strong>Tabs Today</strong> are used by more than 180 thousand people from all over the world every day.</h2>
+        </div>
 
-<section class="container favorite">
-  <h1>Why switch to Tabs Today?</h1>
+        <div class="col-md-4 sign-up">
+          <h3><strong>Tabs Today</strong> is free forever</h3>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: nil, id: nil }) do |f| %>
+            <%= f.email_field :email, class: 'form-control form-control-lg', autocomplete: 'email', placeholder: 'Enter your email' %>
+            <%= f.password_field :password, class: 'form-control form-control-lg', autocomplete: 'new-password', placeholder: 'Enter password' %>
+            <%= f.password_field :password_confirmation, class: 'form-control form-control-lg', autocomplete: 'new-password', placeholder: 'Enter confirmation password' %>
+            <%= f.submit 'Sign up', class: 'btn btn-success btn-lg' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="row">
-    <div class="col-md-4 main-card favorite_card_private">
-      <h4>Private</h4>
-      <p><b>Tabs Today</b> notes are heavily encrypted and can permanently deleted.</p>
-    </div>
-    <div class="col-md-4 main-card favorite_card_cloud">
-      <h4>Cloud-Based</h4>
-      <p><b>Tabs Today</b> lets you access your notes from multiple devices.</p>
-    </div>
-    <div class="col-md-4 main-card favorite_card_fast">
-      <h4>Fast</h4>
-      <p><b>Tabs Today</b> saves notes faster than any other application.</p>
-    </div>
-    <div class="col-md-4 main-card favorite_card_decentralized">
-      <h4>Distributed</h4>
-      <p><b>Tabs Today</b> servers are spread worldwide for security and speed.</p>
-    </div>
-    <div class="col-md-4 main-card favorite_card_free">
-      <h4>Free</h4>
-      <p><b>Tabs Today</b> is free forever. No aggressive ads.</p>
-    </div>
-    <div class="col-md-4 main-card favorite_card_secure">
-      <h4>Secure</h4>
-      <p><b>Tabs Today</b> keeps your notes safe from hacker attacks.</p>
-    </div>
-    <div class="col-md-4 main-card favorite_card_powerful">
-      <h4>Powerful</h4>
-      <p><b>Tabs Today</b> has no limits by the number of your notes.</p>
-    </div>
-    <div class="col-md-4 main-card favorite_card_wecandoit">
-      <h4>We Can do It!</h4>
-      <p>Help make notting safe again – spread the word about <b>Tabs Today</b>.</p>
-    </div>
-    <div class="col-md-4 main-card favorite_card_connect">
-      <h4>Connect</h4>
-      <p><b>Tabs Today</b> from most remote locations.</p>
-    </div>
-  </div>
-</section>
+  <section class="container favorite">
+    <h1>Why switch to Tabs Today?</h1>
 
-<section class="container what-for">
-  <div class="row">
-    <div class="col-md-2 autor">
-      <%= link_to 'https://www.facebook.com/michael.toderashco', class: 'profile-link', target: '_blank' do %>
-        <%= image_tag 'web_developer.jpg', class: 'avatar' %>
-        <span class="name">Michael Toderashco</span>
-      <% end %>
+    <div class="row">
+      <div class="col-md-4 main-card favorite_card_private">
+        <h4>Private</h4>
+        <p><b>Tabs Today</b> notes are heavily encrypted and can permanently deleted.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_cloud">
+        <h4>Cloud-Based</h4>
+        <p><b>Tabs Today</b> lets you access your notes from multiple devices.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_fast">
+        <h4>Fast</h4>
+        <p><b>Tabs Today</b> saves notes faster than any other application.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_decentralized">
+        <h4>Distributed</h4>
+        <p><b>Tabs Today</b> servers are spread worldwide for security and speed.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_free">
+        <h4>Free</h4>
+        <p><b>Tabs Today</b> is free forever. No aggressive ads.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_secure">
+        <h4>Secure</h4>
+        <p><b>Tabs Today</b> keeps your notes safe from hacker attacks.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_powerful">
+        <h4>Powerful</h4>
+        <p><b>Tabs Today</b> has no limits by the number of your notes.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_wecandoit">
+        <h4>We Can do It!</h4>
+        <p>Help make notting safe again – spread the word about <b>Tabs Today</b>.</p>
+      </div>
+      <div class="col-md-4 main-card favorite_card_connect">
+        <h4>Connect</h4>
+        <p><b>Tabs Today</b> from most remote locations.</p>
+      </div>
     </div>
-    <div class="offset-md-1 col-md-9 q">
-      <!-- Focus on what matters most -->
-      <h2>I believe that by doing really important things you will definitely achieve your goal</h2>
-      <span class="who">— Web Programmer<br>"Tabs Today" Ltd.</span>
+  </section>
+
+  <section class="container what-for">
+    <div class="row">
+      <div class="col-md-2 autor">
+        <%= link_to 'https://www.facebook.com/michael.toderashco', class: 'profile-link', target: '_blank' do %>
+          <%= image_tag 'web_developer.jpg', class: 'avatar' %>
+          <span class="name">Michael Toderashco</span>
+        <% end %>
+      </div>
+      <div class="offset-md-1 col-md-9 q">
+        <!-- Focus on what matters most -->
+        <h2>I believe that by doing really important things you will definitely achieve your goal</h2>
+        <span class="who">— Web Programmer<br>"Tabs Today" Ltd.</span>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+<% end %>
