@@ -10,7 +10,10 @@ Role.create(name: :admin)
 Role.create(name: :client)
 Role.create(name: :user)
 
-admin_user = User.create(email: 'admin@gmail.com',
-                         password: 'password1234',
-                         password_confirmation: 'password1234')
-admin_user.add_role(:admin)
+admin_user = User.create(
+  email: ENV['ADMIN_USER_EMAIL'],
+  password: ENV['ADMIN_USER_PASSWORD'],
+  password_confirmation: ENV['ADMIN_USER_PASSWORD']
+)
+
+# admin_user.add_role(:admin)

@@ -1,41 +1,28 @@
-version: '3'
 services:
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && rails server -b '0.0.0.0'"
+    volumes:
+      - .:/web_app
+      - bundle_data:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: ${RAILS_ENV}
+
   db:
+    platform: linux/amd64
     image: mysql:5.7
     volumes:
-      - ./db/data:/var/lib/mysql
-    restart: always
-    ports:
-      - 127.0.0.1:3306:3306
+      - db_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
-  app:
-    build:
-      context: .
-      dockerfile: ./docker/app/Dockerfile
-    volumes:
-      - .:/var/www/tabs.today
-    restart: always
-    depends_on:
-      - db
-  web:
-    build:
-      context: .
-      dockerfile: ./docker/web/Dockerfile
-    depends_on:
-      - app
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - .:/var/www/tabs.today
-    restart: always
-  cron:
-    build:
-      context: .
-      dockerfile: ./docker/cron/Dockerfile
-    volumes:
-      - .:/var/www/app
-    restart: always
-    depends_on:
-      - db
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DEVELOPMENT_DATABASE_NAME}
+      MYSQL_USER: ${DEVELOPMENT_DATABASE_USER_NAME}
+      MYSQL_PASSWORD: ${DEVELOPMENT_DATABASE_PASSWORD}
+
+volumes:
+  db_data:
+  bundle_data:

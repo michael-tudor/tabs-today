@@ -2,21 +2,24 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
-  host: 127.0.0.1
-  username: root
-  password: 123456
-  # variables:
-  #   sql_mode: TRADITIONAL
 
 development:
   <<: *default
-  database: tmp
+  host: <%= ENV['DEVELOPMENT_DATABASE_HOST'] %>
+  username: <%= ENV['DEVELOPMENT_DATABASE_USER_NAME'] %>
+  database: <%= ENV['DEVELOPMENT_DATABASE_NAME'] %>
+  password: <%= ENV['DEVELOPMENT_DATABASE_PASSWORD'] %>
 
 test:
   <<: *default
-  database: tabs_today_test
+  host: <%= ENV['TEST_DATABASE_HOST'] %>
+  username: <%= ENV['TEST_DATABASE_USER_NAME'] %>
+  database: <%= ENV['TEST_DATABASE_NAME'] %>
+  password: <%= ENV['TEST_DATABASE_PASSWORD'] %>
 
 production:
   <<: *default
-  database: tabs_today_production
-  password: root
+  host: <%= ENV['PRODUCTION_DATABASE_HOST'] %>
+  username: <%= ENV['PRODUCTION_DATABASE_USER_NAME'] %>
+  database: <%= ENV['PRODUCTION_DATABASE_NAME'] %>
+  password: <%= ENV['PRODUCTION_DATABASE_PASSWORD'] %>
